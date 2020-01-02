@@ -16,7 +16,7 @@ export default function Header() {
   `)
 
   return (
-    <header calassName={headerStyles.header}>
+    <header className={headerStyles.header}>
       <h1>
         <Link to="/" className={headerStyles.title}>
           {data.site.siteMetadata.title}
