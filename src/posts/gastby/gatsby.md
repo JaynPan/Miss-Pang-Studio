@@ -3,7 +3,9 @@ title: "The Great Gatsby Bootcamp"
 date: "2020-1-2"
 ---
 
-I just a new bootcamp!
+I just launched a new bootcamp!
+
+![Grass](./background.jpg)
 
 ##Topics Covered
 
