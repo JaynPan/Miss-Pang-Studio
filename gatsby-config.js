@@ -10,6 +10,14 @@ module.exports = {
     author: 'Jay Pan'
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACK_ID,
+        head: true,
+        anonymize: true
+      }
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-contentful',
