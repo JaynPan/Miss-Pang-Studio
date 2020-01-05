@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './header';
 import Footer from './footer';
+import Instagram from './instagram'
 import headerStyles from './layout.module.scss';
 import "../styles/index.scss" 
 
@@ -12,6 +13,7 @@ export default function Layout(props) {
         <Header />
         {props.children}
       </div>
+      <Instagram />
       <Footer />
     </div>
   );
