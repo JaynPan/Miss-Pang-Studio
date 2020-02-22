@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
-import Carousel, { Dots } from '@brainhubeu/react-carousel';
+import Carousel from '@brainhubeu/react-carousel';
 import { FontAwesomeIcon  as Icon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -51,7 +51,7 @@ export default function Instagram() {
           data.allInstagramContent.edges.map((edge, i) => (
             edge.node.localImage && (
               <div key={i} className={instagramStyles.imgWrapper}>
-                <a href={edge.node.link} target='_blank'>
+                <a href={edge.node.link} target='_blank' rel="noopener noreferrer">
                   <Image
                     fluid={edge.node.localImage.childImageSharp.fluid}
                   />
