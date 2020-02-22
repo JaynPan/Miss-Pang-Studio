@@ -1,39 +1,39 @@
-import React from 'react';
-import { navigate } from 'gatsby-link'
+import React from "react"
+import { navigate } from "gatsby-link"
 
-import Head from '../components/head';
-import Layout from '../components/layout'
+import Head from "../components/head"
+import Layout from "../components/layout"
 
 function encode(data) {
   return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
+    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&")
 }
 
 export default function ContactPage() {
   const [state, setState] = React.useState({})
-  const handleChange = (e) => {
+  const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value })
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
     const form = e.target
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        'form-name': form.getAttribute('name'),
+        "form-name": form.getAttribute("name"),
         ...state,
       }),
     })
-      .then(() => navigate(form.getAttribute('action')))
-      .catch((error) => alert(error))
+      .then(() => navigate(form.getAttribute("action")))
+      .catch(error => alert(error))
   }
 
   return (
     <Layout>
-      <Head title='Contact' />
+      <Head title="Contact" />
       <h1>Contact</h1>
       <form
         name="contact"
@@ -47,7 +47,8 @@ export default function ContactPage() {
         <input type="hidden" name="form-name" value="contact" />
         <p hidden>
           <label>
-            Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+            Don’t fill this out:{" "}
+            <input name="bot-field" onChange={handleChange} />
           </label>
         </p>
         <p>
@@ -76,5 +77,5 @@ export default function ContactPage() {
         </p>
       </form>
     </Layout>
-  );
+  )
 }

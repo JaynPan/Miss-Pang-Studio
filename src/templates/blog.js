@@ -1,9 +1,9 @@
-import React from 'react';
-import { graphql } from 'gatsby'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import React from "react"
+import { graphql } from "gatsby"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
-import Layout from '../components/layout'
-import Head from '../components/head'
+import Layout from "../components/layout"
+import Head from "../components/head"
 
 export const query = graphql`
   query($slug: String!) {
@@ -21,14 +21,14 @@ export default function Blog(props) {
   const { title, publishedDate, body } = props.data.contentfulBlogPost
   const options = {
     renderNode: {
-      'embedded-asset-block': (node) => {
-        if(node.data.target.fields) {
-          const alt = node.data.target.fields.title['en-US']
-          const url = node.data.target.fields.file['en-US'].url
+      "embedded-asset-block": node => {
+        if (node.data.target.fields) {
+          const alt = node.data.target.fields.title["en-US"]
+          const { url } = node.data.target.fields.file["en-US"]
           return <img alt={alt} src={url} />
         }
-      }
-    }
+      },
+    },
   }
 
   return (

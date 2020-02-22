@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react"
 
-import Header from './header';
-import Footer from './footer';
-import Instagram from './instagram'
-import headerStyles from './layout.module.scss';
-import "../styles/index.scss" 
+import Header from "./header"
+import Footer from "./footer"
+import Instagram from "./instagram"
+import headerStyles from "./layout.module.scss"
+import "../styles/normalize.scss"
 
 export default function Layout(props) {
   return (
@@ -16,5 +16,5 @@ export default function Layout(props) {
       <Instagram />
       <Footer />
     </div>
-  );
+  )
 }

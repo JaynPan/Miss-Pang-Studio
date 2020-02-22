@@ -1,11 +1,18 @@
 .header {
   padding: 1rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(240, 222, 209);
+  padding: 1em;
 }
 
-.title {
-  color: #000000;
-  font-size: 3rem;
-  text-decoration: none;
+.logo {
+  max-width: 220px;
+
+  img {
+    margin-bottom: 0;
+  }
 }
 
 .nav-list {
@@ -16,7 +23,7 @@
 
 .nav-item {
   color: #999999;
-  font-size: 1.3rem;
+  font-size: 12px;
   margin-right: 1.3rem;
   text-decoration: none;
 
