@@ -1,0 +1,20 @@
+@import "../styles/variables.scss";
+
+section.introduction {
+  padding: 5em;
+  text-align: center;
+
+  .container {
+    max-width: $narrow-maxwidth;
+    margin: 0 auto;
+  }
+
+  .myname {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 2;
+  }
+}

@@ -3,7 +3,6 @@ import React from "react"
 import Header from "./header"
 import Footer from "./footer"
 import Instagram from "./instagram"
-import Box from "./box"
 import contentStyles from "./layout.module.scss"
 import "../styles/normalize.scss"
 
@@ -12,7 +11,6 @@ export default function Layout(props) {
     <div className={contentStyles.container}>
       <div className={contentStyles.content}>
         <Header />
-        <Box />
         {props.children}
       </div>
       <Instagram />

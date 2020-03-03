@@ -43,7 +43,9 @@ export default function Header() {
         <div className="header-container">
           <nav>
             <div className="logo">
-              <img src={MisspangLogo} alt={data.site.siteMetadata.author} />
+              <Link to="/">
+                <img src={MisspangLogo} alt={data.site.siteMetadata.author} />
+              </Link>
             </div>
             <div className={`navigation ${isMobileNavOpen ? "active" : ""}`}>
               <div className="overlay close-icon" onClick={toggleNav}>
@@ -55,16 +57,24 @@ export default function Header() {
                 </div>
                 <ul className="nav-list">
                   <li className="nav-list-item">
-                    <Link to="/about">About</Link>
+                    <Link to="/about" activeClassName="current-page">
+                      About
+                    </Link>
                   </li>
                   <li className="nav-list-item">
-                    <Link to="/about">Service</Link>
+                    <Link to="/about" activeClassName="current-page">
+                      Service
+                    </Link>
                   </li>
                   <li className="nav-list-item">
-                    <Link to="/about">Works</Link>
+                    <Link to="/about" activeClassName="current-page">
+                      Works
+                    </Link>
                   </li>
                   <li className="nav-list-item">
-                    <Link to="/about">Blog</Link>
+                    <Link to="/about" activeClassName="current-page">
+                      Blog
+                    </Link>
                   </li>
                 </ul>
                 <ul className="social-media-list">
