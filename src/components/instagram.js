@@ -43,13 +43,27 @@ export default function Instagram() {
         </a>
       </h3>
       <Carousel
-        arrowLeft={<Icon icon={faAngleLeft} style={{ marginRight: "20px" }} />}
-        arrowRight={<Icon icon={faAngleRight} style={{ marginLeft: "20px" }} />}
+        arrowLeft={<Icon icon={faAngleLeft} style={{ margin: "0 20px" }} />}
+        arrowRight={<Icon icon={faAngleRight} style={{ margin: "0 20px" }} />}
         addArrowClickHandler
         slidesPerPage={6}
         infinite
         autoPlay={3000}
         animationSpeed={1000}
+        keepDirectionWhenDragging
+        breakpoints={{
+          1000: {
+            slidesPerPage: 4,
+            slidesPerScroll: 4,
+            clickToChange: false,
+          },
+          500: {
+            slidesPerPage: 3,
+            slidesPerScroll: 3,
+            clickToChange: false,
+            animationSpeed: 2000,
+          },
+        }}
       >
         {data.allInstagramContent.edges.map(
           (edge, i) =>
