@@ -6,7 +6,8 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 import "@brainhubeu/react-carousel/lib/style.css"
 
-import instagramStyles from "./instagram.module.scss"
+import "./instagram.scss"
+import InstagramIcon from "./instagram_icon"
 
 export default function Instagram() {
   const data = useStaticQuery(graphql`
@@ -34,14 +35,18 @@ export default function Instagram() {
   `)
 
   return (
-    <div>
-      <h3 style={{ textAlign: "center" }}>Instagram Feed</h3>
+    <div className="instagram-carousel-container">
+      <h3 style={{ textAlign: "center", fontSize: "1.5rem" }}>
+        <a href="https://www.instagram.com/misspang_studio/">
+          <InstagramIcon />
+          {"  "}Instagram
+        </a>
+      </h3>
       <Carousel
-        arrowLeft={<Icon icon={faAngleLeft} />}
-        arrowRight={<Icon icon={faAngleRight} />}
+        arrowLeft={<Icon icon={faAngleLeft} style={{ marginRight: "20px" }} />}
+        arrowRight={<Icon icon={faAngleRight} style={{ marginLeft: "20px" }} />}
         addArrowClickHandler
-        slidesPerPage={4}
-        centered
+        slidesPerPage={6}
         infinite
         autoPlay={3000}
         animationSpeed={1000}
@@ -49,7 +54,7 @@ export default function Instagram() {
         {data.allInstagramContent.edges.map(
           (edge, i) =>
             edge.node.localImage && (
-              <div key={i} className={instagramStyles.imgWrapper}>
+              <div key={i} className="img-wrapper">
                 <a
                   href={edge.node.link}
                   target="_blank"
