@@ -1,18 +1,36 @@
 import React from "react"
+import HomeBanner from "../images/white-flowers.jpg"
+import WorksBanner from "../images/holding-flower.jpg"
 
 export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
 
 const initialState = {
-  theme: "light",
+  isHomePage: true,
+  banner: HomeBanner,
 }
 
 function reducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_THEME": {
+    case "SWITCH_BANNER": {
       return {
         ...state,
-        theme: state.theme === "light" ? "dark" : "light",
+        banner: action.banner,
+      }
+    }
+    case "PAGE_NAME": {
+      let banner = ""
+
+      if (action.page === "home") {
+        banner = HomeBanner
+      } else if (action.page === "works") {
+        banner = WorksBanner
+      }
+
+      return {
+        ...state,
+        banner,
+        isHomePage: action.page === "home",
       }
     }
     default:
