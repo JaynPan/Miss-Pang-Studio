@@ -11,6 +11,10 @@
   aside.categories {
     width: 200px;
     margin-right: 3rem;
+
+    .filter-btn {
+      display: block;
+    }
   }
 
   main.works {

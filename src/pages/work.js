@@ -1,13 +1,34 @@
 import React from "react"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 import Head from "../components/head"
 import Layout from "../components/layout"
-import Img from "../images/holding-flower.jpg"
 import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import "./work.scss"
 
-export default function Works() {
+export default function Work() {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulWork {
+        edges {
+          node {
+            title
+            slug
+            cover {
+              fluid {
+                src
+              }
+            }
+            excerpt
+            category
+          }
+        }
+      }
+    }
+  `)
+  const works = data.allContentfulWork.edges;
   const dispatch = React.useContext(GlobalDispatchContext)
+  const [type, setType] = React.useState("")
 
   React.useEffect(() => {
     dispatch({ type: "PAGE_NAME", page: "works" })
@@ -20,29 +41,50 @@ export default function Works() {
         <div className="work-inner-container">
           <aside className="categories">
             <h3>Category</h3>
-            <p>LOGO設計</p>
-            <p>插畫設計</p>
-            <p>名片設計</p>
+            <a
+              className="filter-btn"
+              href="javascript:void(0)"
+              onClick={() => setType("")}
+            >
+              ALL
+            </a>
+            <a
+              className="filter-btn"
+              href="javascript:void(0)"
+              onClick={() => setType("插畫設計")}
+            >
+              插畫設計
+            </a>
+            <a
+              className="filter-btn"
+              href="javascript:void(0)"
+              onClick={() => setType("名片設計")}
+            >
+              名片設計
+            </a>
           </aside>
-          <main className="works">
-            {[1, 2, 3, 4, 5].map(val => (
-              <div className="work" key={val}>
-                <h2 className="work-title">Keeping cooking simple</h2>
-                <p className="work-info">July 19 2019 | 3 comments</p>
-                <div className="img">
-                  <img src={Img} alt="image" className="work-image" />
+            <main className="works">
+            {works
+              .filter(({ node }) => {
+                if (!type) return true
+
+                return type === node.category
+              })
+              .map(({ node }, i) => (
+                <div className="work" key={i}>
+                  <h2 className="work-title">{node.title}</h2>
+                  <p className="work-info">{node.category}</p>
+                  <div className="img">
+                    <img src={`https:${node.cover.fluid.src}`} />
+                  </div>
+                  <p className="work-body">
+                    {node.excerpt}
+                  </p>
+                  <Link to={`/work/${node.slug}`} className="work-read-more">
+                    Continue Reading
+                  </Link>
                 </div>
-                <p className="work-body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores, vel maxime? Laboriosam molestias, natus repellat eius
-                  quisquam exercitationem dolore sint quidem velit iste
-                  accusantium, autem debitis eos. Eos, maiores voluptatibus.
-                </p>
-                <a href="#" className="work-read-more">
-                  Continue Reading
-                </a>
-              </div>
-            ))}
+              ))}
           </main>
         </div>
       </section>
