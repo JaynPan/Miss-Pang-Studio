@@ -37,29 +37,29 @@ export default function Instagram() {
   return (
     <div className="instagram-carousel-container">
       <h3 style={{ textAlign: "center", fontSize: "1.5rem" }}>
-        <a href="https://www.instagram.com/misspang_studio/">
+        <a href="https://www.instagram.com/misspang_studio/" target="_blank">
           <InstagramIcon />
           {"  "}Instagram
         </a>
       </h3>
       <Carousel
-        arrowLeft={<Icon icon={faAngleLeft} style={{ margin: "0 20px" }} />}
-        arrowRight={<Icon icon={faAngleRight} style={{ margin: "0 20px" }} />}
+        arrowLeft={<Icon icon={faAngleLeft} style={{ margin: "0 20px", cursor: 'pointer' }} />}
+        arrowRight={<Icon icon={faAngleRight} style={{ margin: "0 20px", cursor: 'pointer' }} />}
         addArrowClickHandler
-        slidesPerPage={6}
+        slidesPerPage={4}
         infinite
-        autoPlay={3000}
+        autoPlay={6000}
         animationSpeed={1000}
         keepDirectionWhenDragging
         breakpoints={{
           1000: {
-            slidesPerPage: 4,
-            slidesPerScroll: 4,
+            slidesPerPage: 3,
+            slidesPerScroll: 3,
             clickToChange: false,
           },
           500: {
-            slidesPerPage: 3,
-            slidesPerScroll: 3,
+            slidesPerPage: 2,
+            slidesPerScroll: 2,
             clickToChange: false,
             animationSpeed: 2000,
           },
