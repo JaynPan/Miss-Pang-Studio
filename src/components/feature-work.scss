@@ -2,12 +2,21 @@
 
 .features-section {
   background-color: #fff7f0;
+  background-image: url('../images/feature-works.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   .features-inner-section {
     max-width: $wide-maxwidth;
     margin: 0 auto;
     padding: 5em 0;
     width: 100%;
+
+    .features-work-title {
+      max-width: 150px;
+      margin: 0 auto;
+    }
   }
 
   .feature {

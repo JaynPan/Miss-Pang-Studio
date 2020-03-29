@@ -4,10 +4,10 @@ import Image from "gatsby-image"
 import Carousel from "@brainhubeu/react-carousel"
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome"
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons"
+import HandwriteIns from "../images/instagram.png"
 import "@brainhubeu/react-carousel/lib/style.css"
 
 import "./instagram.scss"
-import InstagramIcon from "./instagram_icon"
 
 export default function Instagram() {
   const data = useStaticQuery(graphql`
@@ -36,10 +36,9 @@ export default function Instagram() {
 
   return (
     <div className="instagram-carousel-container">
-      <h3 style={{ textAlign: "center", fontSize: "1.5rem" }}>
+      <h3 className="instagram-title">
         <a href="https://www.instagram.com/misspang_studio/" target="_blank">
-          <InstagramIcon />
-          {"  "}Instagram
+          <img src={HandwriteIns} alt=" Instagram" />
         </a>
       </h3>
       <Carousel
