@@ -6,7 +6,7 @@ import Head from "../components/head"
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulWork(slug: {eq: $slug} ) {
+    contentfulWork(slug: { eq: $slug }) {
       title
     }
   }

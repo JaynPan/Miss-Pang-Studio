@@ -26,7 +26,7 @@ export default function Work() {
       }
     }
   `)
-  const works = data.allContentfulWork.edges;
+  const works = data.allContentfulWork.edges
   const dispatch = React.useContext(GlobalDispatchContext)
   const [type, setType] = React.useState("")
 
@@ -41,29 +41,17 @@ export default function Work() {
         <div className="work-inner-container">
           <aside className="categories">
             <h3>Category</h3>
-            <a
-              className="filter-btn"
-              href="javascript:void(0)"
-              onClick={() => setType("")}
-            >
+            <a className="filter-btn" onClick={() => setType("")}>
               ALL
             </a>
-            <a
-              className="filter-btn"
-              href="javascript:void(0)"
-              onClick={() => setType("插畫設計")}
-            >
+            <a className="filter-btn" onClick={() => setType("插畫設計")}>
               插畫設計
             </a>
-            <a
-              className="filter-btn"
-              href="javascript:void(0)"
-              onClick={() => setType("名片設計")}
-            >
+            <a className="filter-btn" onClick={() => setType("名片設計")}>
               名片設計
             </a>
           </aside>
-            <main className="works">
+          <main className="works">
             {works
               .filter(({ node }) => {
                 if (!type) return true
@@ -77,9 +65,7 @@ export default function Work() {
                   <div className="img">
                     <img src={`https:${node.cover.fluid.src}`} />
                   </div>
-                  <p className="work-body">
-                    {node.excerpt}
-                  </p>
+                  <p className="work-body">{node.excerpt}</p>
                   <Link to={`/work/${node.slug}`} className="work-read-more">
                     Continue Reading
                   </Link>
