@@ -5,7 +5,7 @@ a {
   text-decoration: none;
 
   &:hover,
-  &:focus {
+  &.current-page {
     color: $alink-hover;
   }
 }

@@ -64,34 +64,41 @@ export default function Header() {
                 </div>
                 <ul className="nav-list">
                   <li className="nav-list-item">
+                    <Link to="/" activeClassName="current-page">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="nav-list-item">
                     <Link to="/work" activeClassName="current-page">
                       Work
                     </Link>
                   </li>
                   <li className="nav-list-item">
-                    <Link to="/" activeClassName="current-page">
+                    <Link to="/gallery" activeClassName="current-page">
                       Gallery
                     </Link>
                   </li>
                   <li className="nav-list-item">
-                    <Link to="/" activeClassName="current-page">
-                      Blog
-                    </Link>
+                    <a href="https://medium.com">Blog</a>
                   </li>
                 </ul>
                 <ul className="social-media-list">
                   <li className="social-media-list-item">
-                    <a href="/">
+                    <a
+                      href="https://www.instagram.com/misspang_studio/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <InstagramIcon />
                     </a>
                   </li>
                   <li className="social-media-list-item">
-                    <a href="/">
+                    <a href="/" target="_blank" rel="noopener noreferrer">
                       <FacebookIcon />
                     </a>
                   </li>
                   <li className="social-media-list-item">
-                    <a href="/">
+                    <a href="/" target="_blank" rel="noopener noreferrer">
                       <YoutubeIcon />
                     </a>
                   </li>
