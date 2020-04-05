@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import RichTextRenderer from "../components/contentful_rich_text_renderer"
 
+import { GlobalDispatchContext } from "../context/GlobalContextProvider"
 import Layout from "../components/layout"
 import Head from "../components/head"
 import "./work.scss"
@@ -19,6 +20,11 @@ export const query = graphql`
 
 export default function Work(props) {
   const { title, content } = props.data.contentfulWork
+  const dispatch = React.useContext(GlobalDispatchContext)
+
+  React.useEffect(() => {
+    dispatch({ type: "PAGE_NAME", page: "work" })
+  }, [dispatch])
 
   return (
     <Layout>

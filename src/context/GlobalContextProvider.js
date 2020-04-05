@@ -1,6 +1,7 @@
 import React from "react"
 import HomeBanner from "../images/white-flowers.jpg"
 import WorksBanner from "../images/holding-flower.jpg"
+import WorkBanner from "../images/work.jpg"
 
 export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
@@ -25,6 +26,8 @@ function reducer(state, action) {
         banner = HomeBanner
       } else if (action.page === "works") {
         banner = WorksBanner
+      } else if (action.page === "work") {
+        banner = WorkBanner
       }
 
       return {
