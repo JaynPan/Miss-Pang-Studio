@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import Image from "gatsby-image"
 
 import Head from "../components/head"
 import Layout from "../components/layout"
@@ -15,8 +16,8 @@ export default function Work() {
             title
             slug
             cover {
-              fluid {
-                src
+              fluid(maxHeight: 360, maxWidth: 360, quality: 90) {
+                ...GatsbyContentfulFluid_withWebp
               }
             }
             excerpt
@@ -82,10 +83,7 @@ export default function Work() {
                     <h2 className="work-title">{node.title}</h2>
                     <p className="work-info">{node.category}</p>
                     <div className="img">
-                      <img
-                        src={`https:${node.cover.fluid.src}`}
-                        alt={node.title}
-                      />
+                      <Image fluid={node.cover.fluid} />
                     </div>
                     <p className="work-body">{node.excerpt}</p>
                     <Link to={`/work/${node.slug}`} className="work-read-more">
