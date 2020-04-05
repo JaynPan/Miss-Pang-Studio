@@ -6,7 +6,7 @@ a {
 
   &:hover,
   &:focus {
-    color: rgb(104, 50, 50);
+    color: $alink-hover;
   }
 }
 
@@ -99,8 +99,6 @@ header {
     display: none;
     cursor: pointer;
   }
-
-
 
   @media (max-width: $laptopPortrait) {
     .navigation {

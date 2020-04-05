@@ -14,7 +14,7 @@ export default function IndexPage() {
 
   React.useEffect(() => {
     dispatch({ type: "PAGE_NAME", page: "home" })
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout>

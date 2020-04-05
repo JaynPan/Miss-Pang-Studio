@@ -65,7 +65,7 @@ export default function Header() {
                 <ul className="nav-list">
                   <li className="nav-list-item">
                     <Link to="/work" activeClassName="current-page">
-                      Works
+                      Work
                     </Link>
                   </li>
                   <li className="nav-list-item">

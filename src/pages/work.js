@@ -29,10 +29,20 @@ export default function Work() {
   const works = data.allContentfulWork.edges
   const dispatch = React.useContext(GlobalDispatchContext)
   const [type, setType] = React.useState("")
+  const [categories, setCategories] = React.useState()
 
   React.useEffect(() => {
     dispatch({ type: "PAGE_NAME", page: "works" })
-  }, [])
+
+    // store all unique categories
+    let uniqueCat = []
+    data.allContentfulWork.edges.forEach(({ node }) => {
+      if (node.category && !uniqueCat.includes(node.category)) {
+        uniqueCat.push(node.category)
+      }
+    })
+    setCategories(uniqueCat)
+  }, [data, data.allContentfulWork.edges.node, dispatch])
 
   return (
     <Layout>
@@ -40,37 +50,49 @@ export default function Work() {
       <section>
         <div className="work-inner-container">
           <aside className="categories">
-            <h3>Category</h3>
-            <a className="filter-btn" onClick={() => setType("")}>
+            <button
+              className={`filter-btn link-button ${!type ? "current" : ""}`}
+              onClick={() => setType("")}
+            >
               ALL
-            </a>
-            <a className="filter-btn" onClick={() => setType("插畫設計")}>
-              插畫設計
-            </a>
-            <a className="filter-btn" onClick={() => setType("名片設計")}>
-              名片設計
-            </a>
+            </button>
+            {categories &&
+              categories.map((cat, i) => (
+                <button
+                  key={`cat_link_${i}`}
+                  className={`filter-btn link-button ${
+                    type === cat ? "current" : ""
+                  }`}
+                  onClick={() => setType(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
           </aside>
           <main className="works">
-            {works
-              .filter(({ node }) => {
-                if (!type) return true
+            {works &&
+              works
+                .filter(({ node }) => {
+                  if (!type) return true
 
-                return type === node.category
-              })
-              .map(({ node }, i) => (
-                <div className="work" key={i}>
-                  <h2 className="work-title">{node.title}</h2>
-                  <p className="work-info">{node.category}</p>
-                  <div className="img">
-                    <img src={`https:${node.cover.fluid.src}`} />
+                  return type === node.category
+                })
+                .map(({ node }, i) => (
+                  <div className="work" key={i}>
+                    <h2 className="work-title">{node.title}</h2>
+                    <p className="work-info">{node.category}</p>
+                    <div className="img">
+                      <img
+                        src={`https:${node.cover.fluid.src}`}
+                        alt={node.title}
+                      />
+                    </div>
+                    <p className="work-body">{node.excerpt}</p>
+                    <Link to={`/work/${node.slug}`} className="work-read-more">
+                      Continue Reading
+                    </Link>
                   </div>
-                  <p className="work-body">{node.excerpt}</p>
-                  <Link to={`/work/${node.slug}`} className="work-read-more">
-                    Continue Reading
-                  </Link>
-                </div>
-              ))}
+                ))}
           </main>
         </div>
       </section>
