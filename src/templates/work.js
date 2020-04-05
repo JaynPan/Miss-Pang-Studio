@@ -4,6 +4,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 import Layout from "../components/layout"
 import Head from "../components/head"
+import "./work.scss"
 
 export const query = graphql`
   query($slug: String!) {
@@ -33,8 +34,10 @@ export default function Work(props) {
   return (
     <Layout>
       <Head title={title} />
-      <h1>{title}</h1>
-      {documentToReactComponents(content.json, options)}
+      <article className="work-article">
+        <h1 className="title">{title}</h1>
+        {documentToReactComponents(content.json, options)}
+      </article>
     </Layout>
   )
 }

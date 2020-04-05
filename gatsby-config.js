@@ -6,7 +6,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Miss Pange Studio",
+    title: "Miss Pang Studio",
     author: "Miss Pang",
   },
   plugins: [
