@@ -12,20 +12,15 @@ import "./instagram.scss"
 export default function Instagram() {
   const data = useStaticQuery(graphql`
     query {
-      allInstagramContent(limit: 12) {
+      allInstaNode {
         edges {
           node {
-            link
-            localImage {
+            id
+            localFile {
               childImageSharp {
-                fluid(maxHeight: 500, maxWidth: 500, quality: 90) {
+                fluid(maxHeight: 250, maxWidth: 250, quality: 90) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
-              }
-            }
-            images {
-              standard_resolution {
-                url
               }
             }
           }
@@ -42,8 +37,18 @@ export default function Instagram() {
         </a>
       </h3>
       <Carousel
-        arrowLeft={<Icon icon={faAngleLeft} style={{ margin: "0 20px", cursor: 'pointer' }} />}
-        arrowRight={<Icon icon={faAngleRight} style={{ margin: "0 20px", cursor: 'pointer' }} />}
+        arrowLeft={
+          <Icon
+            icon={faAngleLeft}
+            style={{ margin: "0 20px", cursor: "pointer" }}
+          />
+        }
+        arrowRight={
+          <Icon
+            icon={faAngleRight}
+            style={{ margin: "0 20px", cursor: "pointer" }}
+          />
+        }
         addArrowClickHandler
         slidesPerPage={4}
         infinite
@@ -64,16 +69,16 @@ export default function Instagram() {
           },
         }}
       >
-        {data.allInstagramContent.edges.map(
+        {data.allInstaNode.edges.map(
           (edge, i) =>
-            edge.node.localImage && (
+            edge.node.localFile && (
               <div key={i} className="img-wrapper">
                 <a
-                  href={edge.node.link}
+                  href={`https://instagram.com/p/${edge.node.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image fluid={edge.node.localImage.childImageSharp.fluid} />
+                  <Image fluid={edge.node.localFile.childImageSharp.fluid} />
                 </a>
               </div>
             )

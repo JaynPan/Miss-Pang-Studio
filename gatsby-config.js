@@ -52,9 +52,13 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-instagram-all",
+      resolve: `gatsby-source-instagram`,
       options: {
+        username: `misspang_studio`,
         access_token: process.env.INSTAGRAM_ACCESS_TOKEN,
+        instagram_id: process.env.INSTAGRAM_ID,
+        paginate: 100,
+        maxPosts: 1000,
       },
     },
   ],
